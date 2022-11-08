@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Branden Vennes',
   tagline: 'Functional Programming, Scala, and AWS',
-  url: 'https://brandenvennes.com',
+  url: 'https://www.brandenvennes.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -64,7 +64,7 @@ const config = {
         items: [
           {to: '/', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/b-vennes',
+            href: 'https://github.com/b-vennes/',
             label: 'GitHub',
             position: 'right',
           },
