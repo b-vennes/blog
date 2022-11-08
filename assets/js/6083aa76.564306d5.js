@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[19],{531:a=>{a.exports=JSON.parse('{"label":"Functional-Programming","permalink":"/tags/functional-programming","allTagsPath":"/tags","count":1}')}}]);
