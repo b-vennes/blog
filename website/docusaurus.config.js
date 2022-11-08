@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Branden Vennes',
   tagline: 'Functional Programming, Scala, and AWS',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://brandenvennes.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -58,53 +58,22 @@ const config = {
       navbar: {
         title: 'Branden Vennes',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Blog Logo',
+          src: 'img/ai-logo.svg',
         },
         items: [
           {to: '/', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/b-vennes',
             label: 'GitHub',
             position: 'right',
           },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
           {
-            title: 'Contact',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/b-vennes',
-              },
-            ],
-          },
+            href: 'https://www.linkedin.com/in/branden-vennes-a70355145/',
+            label: 'LinkedIn',
+            position: 'right',
+          }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
