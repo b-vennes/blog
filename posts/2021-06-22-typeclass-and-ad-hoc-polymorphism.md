@@ -1,10 +1,9 @@
 ---
-title: Typeclasses and Ad-Hoc Polymorphism
 tags: ["Functional-Programming", "Scala", "Software-Architecture"]
-category: "test"
-date: 2021-06-22
 draft: false
 ---
+
+# Typeclasses and Ad-Hoc Polymorphism
 
 Typeclasses are a construct for declaring categorical behavior on types in the Haskell programming language, however,
 the concept is not restricted to just Haskell.  The typeclass is an implementation of ad-hoc polymorphism, which
