@@ -16,3 +16,6 @@ jobs:
       - name: Run Docusaurus Publish
         run: |
           sbt docusaurusPublishGhpages
+        env:
+          GIT_USER: ${{ secrets.GIT_USER }}
+          GIT_PASS: ${{ secrets.GIT_PASS }}
