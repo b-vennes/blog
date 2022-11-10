@@ -36,7 +36,7 @@ const config = {
         blog: {
           blogTitle: 'Branden Vennes',
           blogDescription: 'Functional Programming, Scala, and AWS',
-          postsPerPage: "ALL",
+          postsPerPage: 10,
           blogSidebarTitle: 'Posts',
           routeBasePath: '/',
           showReadingTime: true,
@@ -78,6 +78,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['java', 'scala', 'csharp', 'python', 'rust'],
       },
     }),
 };
