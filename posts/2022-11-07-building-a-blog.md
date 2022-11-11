@@ -5,11 +5,13 @@ draft: false
 
 # Building A Blog With Scala Mdoc And Docusaurus
 
-This is a blog post showing how I set up this blog using SBT, Mdoc, and Docusaurus.
-It's a bit of a meta post, but I hope it's useful to someone.
-It wasn't too complex of a task, but it helped me to have some pre-existing knowledge of all the tools.
+This is my third or fourth iteration of a blog site.
+I've tried a custom Angular app, Jekyll, Hugo, and now Mdoc + Docusaurus.
 
-For this post, I will be using the following versions of tools:
+I've been writing Scala and JS for a few years now, so I'm a lot more comfortable with the tooling this time around (sorry Ruby) and feel confident enough to explain the project.
+There are probably very few people who would choose SBT for building a blog, but maybe this can help out a fellow Scala dev with their own site.
+
+For setting up the blog site, I used the following versions of tools:
 
 - SBT 1.7.2
 - Scala 2.13.10
@@ -25,8 +27,7 @@ The Scala site has a good [Getting Started](https://docs.scala-lang.org/getting-
 
 [SBT](https://www.scala-sbt.org/) is a modular and extensible build tool, designed for compiling JVM projects (Scala specifically), but suitable for just about any project (even compiling a blog).
 
-I've configured my `build.sbt` to contain a for compiling my blog posts and a root module for project aggregation.
-In the future, if I want to provide some example code, I can add another module to the root.
+I've configured my `build.sbt` to contain a module for compiling my blog posts and a root module for project aggregation.
 
 ```sbt
 lazy val `posts-mdoc` = project // name something other than 'posts' or 'docs'
