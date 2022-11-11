@@ -1,5 +1,3 @@
-val scala213 = "2.13.8"
-
 lazy val `posts-mdoc` = project
   .enablePlugins(MdocPlugin, DocusaurusPlugin)
   .settings(
@@ -8,7 +6,7 @@ lazy val `posts-mdoc` = project
     libraryDependencies ++= Seq(
       "org.typelevel" %% "cats-core" % "2.8.0"
     ),
-    scalaVersion := scala213
+    scalaVersion := "2.13.10"
   )
 
 lazy val root = project

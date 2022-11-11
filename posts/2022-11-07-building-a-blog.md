@@ -23,21 +23,21 @@ For this post, I will be using the following versions of tools:
 If you aren't familiar with SBT, or even Scala, I would recommend trying out a basic Scala project first before diving in here.
 The Scala site has a good [Getting Started](https://docs.scala-lang.org/getting-started/index.html) page with some helpful initial resources.
 
-SBT is a modular and extensible build tool, designed for compiling JVM projects (Scala specifically), but suitable for just about any project (even compiling a blog).
+[SBT](https://www.scala-sbt.org/) is a modular and extensible build tool, designed for compiling JVM projects (Scala specifically), but suitable for just about any project (even compiling a blog).
 
-I've configured SBT to contain a module containing the tasks to compile my blog posts, and another module to aggregate all modules in the build.
+I've configured my `build.sbt` to contain a for compiling my blog posts and a root module for project aggregation.
 In the future, if I want to provide some example code, I can add another module to the root.
 
 ```sbt
-lazy val `posts-mdoc` = project
-  .enablePlugins(MdocPlugin, DocusaurusPlugin)
+lazy val `posts-mdoc` = project // name something other than 'posts' or 'docs'
+  .enablePlugins(MdocPlugin, DocusaurusPlugin) // I'll explain these in a bit
   .settings(
-    mdocIn := file("posts"),
-    mdocOut := file("website/blog"),
+    mdocIn := file("posts"), // The directory containing the blog posts
+    mdocOut := file("website/blog"), // The target directory for the compiled blog posts
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "2.8.0"
+      "org.typelevel" %% "cats-core" % "2.8.0" // 😺
     ),
-    scalaVersion := "2.13.8"
+    scalaVersion := "2.13.10" // The Scala version to use when compiling Scala snippets
   )
 
 lazy val root = project
@@ -56,14 +56,14 @@ In order to use these plugins, you need to add the `sbt-mdoc` plugin artifact to
 addSbtPlugin("org.scalameta" % "sbt-mdoc" % "2.3.6" )
 ``` 
 
-The `MdocPlugin` plugin is used to compile the Scala code in the markdown files from the `posts` directory into the `website/blog` directory.
+The `MdocPlugin` plugin compiles Scala code snippets in markdown files located in the `posts` directory and output into the `website/blog` directory.
 
 By default, Mdoc uses the `docs` folder as the input directory, and the `target/mdoc` folder as the output directory.
-However, since we are writing a blog and not project documentation, I've changed the input directory to `posts` and the output directory to `website/blog`, which is where Docusaurus will expect blog posts to be located.
+I've changed the input directory to `posts` and the output directory to `website/blog`, which is where Docusaurus will expect blog posts to be landed at.
 
 I've also included `cats-core` as a dependency for the `posts-mdoc` project.
-Any dependencies you want to use in your blog posts should be added to the `libraryDependencies` collection.
-And [Cats](https://typelevel.org/cats) is a great library, so I use it often.
+Any dependencies you want to use in your Markdown Scala snippets should be added to the `libraryDependencies` collection.
+If you haven't checked out [Cats](https://typelevel.org/cats/), I highly recommend taking a look once you are done reading!
 
 ## Initializing Docusaurus
 
@@ -73,19 +73,20 @@ Before initializing your Docusaurus website, be sure to install the following to
 - [Yarn](https://yarnpkg.com/getting-started/install)
 
 Docusaurus is a static site generator that can scaffold a blog with some nice-looking default styles.
-By default, it creates a section for any project documentation and project blog posts.
-But, it also has a blog-only mode that is perfect for displaying and organizing blog posts.
+It comes out of the box with a static site perfect for project documentation and/or a blog.
+Fortunately, features can be enabled or disabled.
+For my blog, I've disabled the documentation features and am only using the blogging options.
 
-To initialize the Docusaurus project, I ran the following command:
+To initialize the Docusaurus project, run the following command:
 
 ```bash
 npx create-docusaurus@latest website classic
 ```
 
-Npx comes built in with the installation of Node and NPM.
-And although I have used Npx to initialize the project. I will be using Yarn to run the Docusaurus commands.
+Npx comes built-in with an installation of Node and NPM.
+And although Npx was used to initialize the project, I will be using Yarn to run the Docusaurus commands and install dependencies.
 
-After running the initialization command, there will be a new `website` directory within your project.
+Once the project has finished initializing, there will be a new `website` in the root of your blog project.
 
 ## Configuring Docusaurus
 
@@ -95,21 +96,29 @@ There are a lot of settings to tweak, but for this example, I'll only change the
 The `website/docusaurus.config.js` file contains the complete configuration for the Docusaurus project.
 It is structured as a JavaScript object, which provides some type-safety of configuration settings.
 Most editors may even provide some auto-completion for the various configurations.
+I've found the auto-completion helpful for feature discovery.
 
-We are going to change a couple options in the config.
+For now, we are going to change a couple options in the config.
 For reference, these steps follow closely with the [Blog Setup](https://docusaurus.io/docs/blog) instructions from the Docusaurus documentation.
+If you'd like more details, I recommend checking out the documentation.
+
+I will also be leaving all the default styles and layouts in place.
+Docusaurus provides some documentation on [styling](https://docusaurus.io/docs/styling-layout), [theming](https://docusaurus.io/docs/using-plugins#using-themes), and [modifying](https://docusaurus.io/docs/swizzling) the site, but I will not be covering them in this post.
 
 1. In the `themeConfig.navbar.items` array, remove the `docs` section and change the `to` field of the `blog` section to `/`.
-   - Removes the `Docs` link from the navbar and changes the `Blog` link to point to the root of the website.
+    - Removes the `Docs` link from the navbar and changes the `Blog` link to point to the root of the website.
 2. In `presets.docs`, set the `docs` field to `false`.
-   - Disable the docs section of the website.
-3. In `presets.blog`, set `routeBasePath: '/'`
+    - Disable the docs section of the website.
+3. In `presets.blog`,  set the property `routeBasePath` to `'/'`.
 4. Remove the `index.js` file from the `website/src/pages` directory.
-   - Removes the default landing page from the website.
-   - You may actually enjoy having the landing page, so feel free to skip this step.
-   - The contents of 'index.js' can also be changed to be more blog-focused.
+    - Removes the default landing page from the website.
+    - You may actually enjoy having the landing page, so feel free to skip this step.
+    - The contents of 'index.js' can also be changed to be more blog-focused.
 
-There will be a couple remaining strings that need to be updated to match your particular style, but I'll leave that up to you.
+There will be a couple remaining text snippets and images that need to be updated to match your particular style, but I'll leave that up to you.
+
+[Undraw](https://undraw.co/illustrations) has some great icons and illustrations that are free to use to add some flavor to your site.
+Also, check out [Unsplash](https://unsplash.com/) for free stock photos that make great banner images.
 
 ## Creating The Site
 
