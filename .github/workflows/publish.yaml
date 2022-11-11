@@ -15,18 +15,19 @@ jobs:
         uses: olafurpg/setup-scala@v13
       - name: Setup Node
         uses: actions/setup-node@v3
-        working-directory: ./website
         with:
           node-version: 16
           cache: yarn
+          working-directory: ./website
       - name: Install Yarn
         run: npm install -g yarn
-        working-directory: ./website
+        with:
+          working-directory: ./website
       - name: Run Docusaurus Create Site
         run: sbt docusaurusCreateSite
       - name: Deploy To GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        working-directory: ./website
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          working-directory: ./website
