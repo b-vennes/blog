@@ -13,20 +13,17 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup Scala
         uses: olafurpg/setup-scala@v13
-      - name: Run Mdoc
-        run: sbt mdoc
       - name: Setup Node
-        working-directory: ./website
         uses: actions/setup-node@v3
+        working-directory: ./website
         with:
           node-version: 16
           cache: yarn
-      - name: Install Dependencies
+      - name: Install Yarn
+        run: npm install -g yarn
         working-directory: ./website
-        run: yarn --cwd website install --frozen-lockfile
-      - name: Build Website
-        working-directory: ./website
-        run: yarn --cwd website build
+      - name: Run Docusaurus Create Site
+        run: sbt docusaurusCreateSite
       - name: Deploy To GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         working-directory: ./website
