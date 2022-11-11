@@ -21,8 +21,7 @@ jobs:
           working-directory: ./website
       - name: Install Yarn
         run: npm install -g yarn
-        with:
-          working-directory: ./website
+        working-directory: ./website
       - name: Run Docusaurus Create Site
         run: sbt docusaurusCreateSite
       - name: Deploy To GitHub Pages
