@@ -16,16 +16,20 @@ jobs:
       - name: Run Mdoc
         run: sbt mdoc
       - name: Setup Node
+        working-directory: ./website
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
       - name: Install Dependencies
+        working-directory: ./website
         run: yarn --cwd website install --frozen-lockfile
       - name: Build Website
+        working-directory: ./website
         run: yarn --cwd website build
       - name: Deploy To GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
+        working-directory: ./website
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./website/build
+          publish_dir: ./build
