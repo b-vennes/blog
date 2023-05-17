@@ -1,18 +1,12 @@
-lazy val `posts-mdoc` = project
+lazy val blog = project
+  .in(file("."))
   .enablePlugins(MdocPlugin, DocusaurusPlugin)
   .settings(
+    organization := "org.vennes",
     mdocIn := file("posts"),
     mdocOut := file("website/blog"),
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "2.8.0"
+      "org.typelevel" %% "cats-core" % "2.9.0"
     ),
-    scalaVersion := "2.13.10"
+    scalaVersion := "3.2.2"
   )
-
-lazy val root = project
-  .in(file("."))
-  .settings(
-    name := "blog",
-    organization := "org.vennes"
-  )
-  .aggregate(`posts-mdoc`)

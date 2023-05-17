@@ -19,8 +19,10 @@ jobs:
           node-version: 18
       - name: Install Yarn
         run: npm install -g yarn
-      - name: Run Docusaurus Create Site
-        run: sbt docusaurusCreateSite
+      - name: Run Mdoc Build
+        run: sbt mdoc
+      - name: Run Docusaurus Build
+        run: yarn --cwd website build
       - name: Deploy To GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
