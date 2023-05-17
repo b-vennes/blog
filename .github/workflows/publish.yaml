@@ -21,6 +21,8 @@ jobs:
         run: npm install -g yarn
       - name: Run Mdoc Build
         run: sbt mdoc
+      - name: Run Yarn Install
+        run: yarn --cwd website install
       - name: Run Docusaurus Build
         run: yarn --cwd website build
       - name: Deploy To GitHub Pages
