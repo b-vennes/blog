@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[677],{9843:a=>{a.exports=JSON.parse('{"label":"Scala","permalink":"/tags/scala","allTagsPath":"/tags","count":3}')}}]);

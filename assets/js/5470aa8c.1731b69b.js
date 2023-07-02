@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[197],{6294:e=>{e.exports=JSON.parse('{"permalink":"/tags/scala","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"blogDescription":"Functional Programming, Scala, and AWS","blogTitle":"Branden Vennes"}')}}]);
