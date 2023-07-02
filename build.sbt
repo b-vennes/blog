@@ -8,5 +8,5 @@ lazy val blog = project
     libraryDependencies ++= Seq(
       "org.typelevel" %% "cats-core" % "2.9.0"
     ),
-    scalaVersion := "3.2.2"
+    scalaVersion := "3.2.2",
   )
