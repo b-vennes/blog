@@ -1,3 +1,8 @@
+---
+tags: ["Functional-Programming", "Scala"]
+draft: false
+---
+
 # Zero To Sixty: Scala Functional Programming
 
 A quick-start guide to the Scala 3 programming language.
