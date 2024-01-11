@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Branden Vennes',
-  tagline: 'Functional Programming, Scala, and AWS',
+  tagline: 'Guides and Thoughts on Functional Programming and Scala',
   url: 'https://www.brandenvennes.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -64,7 +64,12 @@ const config = {
           src: 'img/ai-logo.svg',
         },
         items: [
-          {to: '/', label: 'Blog', position: 'left'},
+          { to: '/', label: 'Blog', position: 'left' },
+          {
+            to: '/about',
+            label: 'About',
+            position: 'right'
+          },
           {
             href: 'https://github.com/b-vennes/',
             label: 'GitHub',
