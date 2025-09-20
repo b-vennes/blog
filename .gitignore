@@ -5,3 +5,5 @@
 project/project/**
 project/metals.sbt
 **/.metals
+**/.scala-build
+**/.DS_Store
